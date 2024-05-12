@@ -4,20 +4,6 @@ set -e
 
 echo "Starting start.sh:"
 
-echo "Starting cron..."
-
-crond -l 2
-
-echo "Cron started. Checking cron is running..."
-
-if pgrep cron > /dev/null; then
-    echo "Cron is OK"
-else
-    echo "Cron not OK. Starting cron..."
-    crond -l 2
-    echo "Cron started."
-fi
-
 echo "Exporting UUID, TIMOUT and RETRY..."
 
 export UUID=$UUID
@@ -44,3 +30,4 @@ fi
 echo "Web OK."
 echo "Running cron in foreground. Expect no more output from start.sh. Start.sh OK"
 crond -l 2 -f
+echo "If you are seeing this, CRON failed."
