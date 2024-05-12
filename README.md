@@ -1,6 +1,6 @@
 # curl-cron
 
-Docker image that runs a runs a curl command based on cron, for [Healthchecks.io](https://healthchecks.io/). 
+Docker image that runs a runs a curl command based on cron, for [Healthchecks.io](https://healthchecks.io/), with only the UUID and a CRON timetable. 
 > [!IMPORTANT]  
 >Please note I am in no way affiliated, and this is not the recommended usage. 
 
