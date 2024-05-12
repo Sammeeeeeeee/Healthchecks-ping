@@ -10,6 +10,18 @@ if [ -z "$UUID" ]; then
     exit 1
 fi
 
+# Check if CRON is set and not empty
+if [ -z "$CRON" ]; then
+    echo "ERROR: No CRON provided in CRON variable."
+    exit 1
+fi
+
+# Validate CRON expression
+if ! echo "$CRON" | crontab -l 2>/dev/null; then
+    echo "ERROR: Invalid CRON expression."
+    exit 1
+fi
+
 # Construct the URL
 URL="https://hc-ping.com/$UUID"
 
