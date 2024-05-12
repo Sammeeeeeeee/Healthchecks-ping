@@ -42,5 +42,5 @@ if [ "$WEB" = "true" ]; then
 fi
 
 echo "Web OK."
-echo " Running cron in foreground. Expect no more output from start.sh. Start.sh OK"
+echo "Running cron in foreground. Expect no more output from start.sh. Start.sh OK"
 crond -l 2 -f
