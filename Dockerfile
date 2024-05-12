@@ -1,11 +1,8 @@
-# Use the Alpine Linux base image
+
 FROM alpine:latest
 
-# Install curl and nginx
-RUN apk --no-cache add curl nginx dcron
+RUN apk --no-cache add curl nginx cron busybox
 
-
-# Add shell scripts
 ADD *.sh /
 RUN chmod +x /*.sh
 
@@ -18,4 +15,3 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Set the entrypoint and default command
 ENTRYPOINT ["/start.sh"]
 CMD [""]
-
