@@ -2,7 +2,8 @@
 FROM alpine:latest
 
 # Install curl and nginx
-RUN apk --no-cache add curl nginx
+RUN apk --no-cache add curl nginx dcron
+
 
 # Add shell scripts
 ADD *.sh /
