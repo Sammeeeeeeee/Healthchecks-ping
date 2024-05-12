@@ -19,9 +19,9 @@ jobs:
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
+        username: ${{ secrets.KEY }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Push image to Docker Hub
       run: |
-        docker push sammeeeee/cron-curl:${{ github.event.release.tag_name }}
-        docker push sammeeeee/cron-curl:latest
+        docker push sammeeeee/healthcheck-curl:${{ github.event.release.tag_name }}
+        docker push sammeeeee/healthcheck-curl:latest
