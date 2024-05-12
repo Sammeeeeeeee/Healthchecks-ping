@@ -2,7 +2,7 @@
 
 set -e
 
-echo "$(date) - Start"
+echo "$(date) - Starting curl.sh"
 
 if [ -z "$UUID" ]; then
     echo "ERROR: No UUID provided in UUID variable."
@@ -38,4 +38,4 @@ else
     exit 1
 fi
 
-echo "$(date) - End"
+echo "$(date) - curl.sh End"

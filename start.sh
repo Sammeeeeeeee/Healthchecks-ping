@@ -2,7 +2,7 @@
 
 set -e
 
-apk --no-cache add curl crond nginx
+apk --no-cache add curl busybox nginx
 
 export UUID=$UUID
 export TIMEOUT=${TIMEOUT:-10}
