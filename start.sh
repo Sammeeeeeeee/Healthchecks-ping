@@ -39,4 +39,6 @@ if [ "$WEB" = "true" ]; then
     echo "Started nginx"
 fi
 
+crond -l 2
+
 echo "Web OK."
