@@ -2,7 +2,11 @@
 
 set -e
 
-echo "checking cron is running..."
+echo "Starting cron..."
+
+crond -l 2 -f
+
+echo "Cron started. Checking cron is running..."
 
 if pgrep cron > /dev/null; then
     echo "Cron is OK"
