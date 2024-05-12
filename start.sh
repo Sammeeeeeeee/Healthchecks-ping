@@ -39,6 +39,8 @@ if [ "$WEB" = "true" ]; then
     echo "Started nginx"
 fi
 
-crond -l 2
-
 echo "Web OK."
+
+echo "running cron in foreground..."
+crond -l 2 -f
+echo "cron OK"
