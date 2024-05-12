@@ -55,46 +55,15 @@
     <div class="container">
         <div class="config">
             <h2>Server Configuration</h2>
-            <p><strong>UUID:</strong> <span id="uuid"></span></p>
-            <p><strong>Timeout:</strong> <span id="timeout"></span> seconds</p>
-            <p><strong>Retry:</strong> <span id="retry"></span> times</p>
-            <p><strong>Cron:</strong> <span id="cron"></span></p>
+            <p><strong>UUID:</strong> Not set</p>
+            <p><strong>Timeout:</strong> Not set seconds</p>
+            <p><strong>Retry:</strong> Not set times</p>
+            <p><strong>Cron:</strong> Not set</p>
         </div>
         <div class="logs" id="logs">
             <h2>Live Logs</h2>
-            <pre id="logContent"></pre>
+            <pre id="logContent">No logs available</pre>
         </div>
     </div>
-
-    <script>
-        function fetchConfig() {
-            // Fetch configuration settings from environment variables
-            const uuid = process.env.UUID || 'Not set';
-            const timeout = process.env.TIMEOUT || 'Not set';
-            const retry = process.env.RETRY || 'Not set';
-            const cron = process.env.CRON || 'Not set';
-
-            document.getElementById("uuid").innerText = uuid;
-            document.getElementById("timeout").innerText = timeout;
-            document.getElementById("retry").innerText = retry;
-            document.getElementById("cron").innerText = cron;
-        }
-
-        function fetchLogs() {
-            // Fetch live logs from server endpoint
-            fetch("/logs")
-                .then(response => response.text())
-                .then(data => document.getElementById("logContent").innerText = data)
-                .catch(error => console.error('Error fetching logs:', error));
-        }
-
-        // Fetch configuration settings and logs on page load
-        window.onload = function () {
-            fetchConfig();
-            fetchLogs();
-            // Refresh logs every 10 seconds
-            setInterval(fetchLogs, 10000);
-        };
-    </script>
 </body>
 </html>
