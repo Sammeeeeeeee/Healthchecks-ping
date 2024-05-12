@@ -2,11 +2,15 @@
 
 set -e
 
-echo "Getting packages..."
+echo "checking cron is running..."
 
-apk --no-cache add curl cron busybox nginx
-
-echo "Getting packages OK"
+if pgrep cron > /dev/null; then
+    echo "Cron is OK"
+else
+    echo "Cron not OK. Starting cron..."
+    crond -l 2 -f
+    echo "Cron started."
+fi
 
 echo "Exporting UUID, TIMOUT and RETRY..."
 

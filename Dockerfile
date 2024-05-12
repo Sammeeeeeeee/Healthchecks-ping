@@ -1,7 +1,7 @@
 
 FROM alpine:latest
 
-RUN apk --no-cache add curl nginx cron busybox
+RUN apk --no-cache add curl cronie nginx
 
 ADD *.sh /
 RUN chmod +x /*.sh
