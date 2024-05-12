@@ -2,6 +2,8 @@
 
 set -e
 
+echo "Starting start.sh:"
+
 echo "Starting cron..."
 
 crond -l 2
@@ -40,7 +42,5 @@ if [ "$WEB" = "true" ]; then
 fi
 
 echo "Web OK."
-
-echo "running cron in foreground..."
+echo " Running cron in foreground. Expect no more output from start.sh. Start.sh OK"
 crond -l 2 -f
-echo "cron OK"
