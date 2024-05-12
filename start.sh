@@ -18,6 +18,8 @@ if [ "$WEB" = "true" ]; then
     nginx -g "daemon off;"
     echo "Starting nginx..."
 fi
+echo "Setting cron..."
 
 crond -l 2 -f
-echo "start.sh done..."
+
+echo "Cron set. start.sh done..."
