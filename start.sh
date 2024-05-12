@@ -21,8 +21,13 @@ export RETRY=${RETRY:-5}
 echo "Timeout set to: $TIMEOUT seconds"
 echo "Retry count set to: $RETRY times"
 
-echo "$CRON /curl.sh" > /var/spool/cron/crontabs/root
-echo "CRON set to: $CRON"
+if [ -x "/curl.sh" ]; then
+    echo "curl.sh script OK"
+    echo "$CRON /curl.sh" >> /var/spool/cron/crontabs/root
+    echo "CRON job set to: $CRON"
+else
+    echo "CRITICAL: curl.sh script not found."
+fi
 
 if [ "$WEB" = "true" ]; then
     echo "Starting nginx..."
