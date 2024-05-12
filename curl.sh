@@ -13,8 +13,8 @@ fi
 # Construct the URL
 URL="https://hc-ping.com/$UUID"
 
-# Perform the curl with additional options
-if curl -m 10 --retry 5 "$URL"; then
+# Perform the curl with optional options
+if curl -m "$CURL_TIMEOUT" --retry "$CURL_RETRY" "$URL"; then
     echo "$(date) - OK"
 else
     echo "$(date) - FAILED"
