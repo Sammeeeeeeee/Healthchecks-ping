@@ -69,10 +69,15 @@
     <script>
         function fetchConfig() {
             // Fetch configuration settings from environment variables
-            document.getElementById("uuid").innerText = process.env.UUID;
-            document.getElementById("timeout").innerText = process.env.TIMEOUT;
-            document.getElementById("retry").innerText = process.env.RETRY;
-            document.getElementById("cron").innerText = process.env.CRON;
+            const uuid = process.env.UUID || 'Not set';
+            const timeout = process.env.TIMEOUT || 'Not set';
+            const retry = process.env.RETRY || 'Not set';
+            const cron = process.env.CRON || 'Not set';
+
+            document.getElementById("uuid").innerText = uuid;
+            document.getElementById("timeout").innerText = timeout;
+            document.getElementById("retry").innerText = retry;
+            document.getElementById("cron").innerText = cron;
         }
 
         function fetchLogs() {
