@@ -4,7 +4,17 @@ set -e
 
 echo "$(date) - Start"
 
-if curl $OPTIONS; then
+# Check if UUID is set and not empty
+if [ -z "$UUID" ]; then
+    echo "ERROR: No UUID provided in UUID variable."
+    exit 1
+fi
+
+# Construct the URL
+URL="https://hc-ping.com/$UUID"
+
+# Perform the curl with additional options
+if curl -m 10 --retry 5 "$URL"; then
     echo "$(date) - OK"
 else
     echo "$(date) - FAILED"
