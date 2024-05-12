@@ -1,4 +1,4 @@
-# curl-cron
+[![Docker Image CI](https://github.com/Sammeeeeeeee/Healthchecks-ping/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Sammeeeeeeee/Healthchecks-ping/actions/workflows/docker-image.yml)
 
 Docker image that runs a runs a curl command based on cron, for [Healthchecks.io](https://healthchecks.io/), with only the UUID and a CRON timetable. 
 > [!IMPORTANT]  
@@ -14,7 +14,7 @@ A [docker](https://docs.docker.com/guides/get-started/) image is avalible on the
 | CRON | &check;  |  | `/5 * * * *"` | How often you want to curl Healthchecks.io. You can use [crontab.guru](https://crontab.guru/) to help. |
 | TIMEOUT | &cross; | `10` | `10` | How long until CURL [times out](https://everything.curl.dev/usingcurl/timeouts.html). |
 | RETRY | &cross; | `5` | `5` | How many times to [retry](https://everything.curl.dev/usingcurl/downloads/retry.html). |
-
+| WEB | &cross; | `false` | `true` | Simple web server showing details |
 
 ## Docker run
 ```bash
