@@ -3,37 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Webpage</title>
+    <title>Server Configuration and Logs</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f6f6f6;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .config, .logs {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .config h2, .logs h2 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .logs {
+            background-color: #f9f9f9;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            color: #444;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-
-    <h2>Logs:</h2>
-    <pre id="logs"></pre>
-
-    <h2>Configuration:</h2>
-    <pre id="config"></pre>
+    <div class="container">
+        <div class="config">
+            <h2>Server Configuration</h2>
+            <p><strong>UUID:</strong> <span id="uuid"></span></p>
+            <p><strong>Timeout:</strong> <span id="timeout"></span> seconds</p>
+            <p><strong>Retry:</strong> <span id="retry"></span> times</p>
+            <p><strong>Cron:</strong> <span id="cron"></span></p>
+        </div>
+        <div class="logs" id="logs">
+            <h2>Live Logs</h2>
+            <pre id="logContent"></pre>
+        </div>
+    </div>
 
     <script>
-        // Function to fetch logs and configuration from server
-        function fetchLogsAndConfig() {
-            fetch('/logs')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('logs').innerText = data;
-                });
-
-            fetch('/config')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('config').innerText = data;
-                });
+        function fetchConfig() {
+            // Fetch configuration settings from environment variables
+            document.getElementById("uuid").innerText = process.env.UUID;
+            document.getElementById("timeout").innerText = process.env.TIMEOUT;
+            document.getElementById("retry").innerText = process.env.RETRY;
+            document.getElementById("cron").innerText = process.env.CRON;
         }
 
-        // Fetch logs and configuration when the page loads
-        window.onload = function() {
-            fetchLogsAndConfig();
+        function fetchLogs() {
+            // Fetch live logs from server endpoint
+            fetch("/logs")
+                .then(response => response.text())
+                .then(data => document.getElementById("logContent").innerText = data)
+                .catch(error => console.error('Error fetching logs:', error));
         }
+
+        // Fetch configuration settings and logs on page load
+        window.onload = function () {
+            fetchConfig();
+            fetchLogs();
+            // Refresh logs every 10 seconds
+            setInterval(fetchLogs, 10000);
+        };
     </script>
 </body>
 </html>
