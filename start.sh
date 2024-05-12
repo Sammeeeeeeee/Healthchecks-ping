@@ -2,7 +2,7 @@
 
 set -e
 
-apk --no-cache add curl
+apk --no-cache add curl crond nginx
 
 export UUID=$UUID
 export TIMEOUT=${TIMEOUT:-10}
@@ -19,7 +19,7 @@ if [ "$WEB" = "true" ]; then
     echo "Starting nginx..."
 fi
 
-echo "Setting cron..."
+echo "Ngninx OK. Setting cron..."
 
 crond -l 2 -f
 
