@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webpage</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+
+    <h2>Logs:</h2>
+    <pre id="logs"></pre>
+
+    <h2>Configuration:</h2>
+    <pre id="config"></pre>
+
+    <script>
+        // Function to fetch logs and configuration from server
+        function fetchLogsAndConfig() {
+            fetch('/logs')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('logs').innerText = data;
+                });
+
+            fetch('/config')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('config').innerText = data;
+                });
+        }
+
+        // Fetch logs and configuration when the page loads
+        window.onload = function() {
+            fetchLogsAndConfig();
+        }
+    </script>
+</body>
+</html>
