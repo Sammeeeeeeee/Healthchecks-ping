@@ -14,7 +14,7 @@ fi
 URL="https://hc-ping.com/$UUID"
 
 # Perform the curl with optional options
-if curl -m "$CURL_TIMEOUT" --retry "$CURL_RETRY" "$URL"; then
+if curl -m "$TIMEOUT" --retry "$RETRY" "$URL"; then
     echo "$(date) - OK"
 else
     echo "$(date) - FAILED"
