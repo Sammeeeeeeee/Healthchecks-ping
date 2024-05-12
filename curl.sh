@@ -31,7 +31,7 @@ URL="https://hc-ping.com/$UUID"
 
 echo "URL is OK"
 
-if curl -s -m -o /dev/null "$TIMEOUT" --retry "$RETRY" "$URL"; then
+if curl -s -o /dev/null -m "$TIMEOUT" --retry "$RETRY" "$URL"; then
     echo "$(date) - CURL OK"
 else
     echo "$(date) - CURL FAILED"

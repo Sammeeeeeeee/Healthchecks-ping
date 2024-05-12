@@ -4,7 +4,7 @@ set -e
 
 echo "Starting cron..."
 
-crond -l 2 -f
+crond -l 2
 
 echo "Cron started. Checking cron is running..."
 
@@ -12,7 +12,7 @@ if pgrep cron > /dev/null; then
     echo "Cron is OK"
 else
     echo "Cron not OK. Starting cron..."
-    crond -l 2 -f
+    crond -l 2
     echo "Cron started."
 fi
 
@@ -39,8 +39,4 @@ if [ "$WEB" = "true" ]; then
     echo "Started nginx"
 fi
 
-echo "Web OK. Setting cron..."
-
-crond -l 2 -f
-
-echo "Cron set. start.sh done..."
+echo "Web OK."
