@@ -9,20 +9,21 @@ if [ -z "$UUID" ]; then
     exit 1
 else
     echo "$UUID provided as UUID..."
+fi  # Added fi here
 
 if [ -z "$CRON" ]; then
     echo "ERROR: No CRON provided in CRON variable."
     exit 1
 else
-    echo "$CRON provided as UUID. Checking valid CRON..."
-fi
+    echo "$CRON provided as CRON. Checking valid CRON..."
+fi  # Added fi here
 
 if ! crontab -l 2>/dev/null | grep -q "$CRON"; then
     echo "ERROR: Invalid CRON expression or CRON not defined."
     exit 1
 else
     echo "$CRON is OK"
-fi
+fi  
 
 echo "Building URL..."
 
