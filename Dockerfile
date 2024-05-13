@@ -1,13 +1,17 @@
-# Dockerfile
-FROM alpine:latest
+# Specify a base image
+FROM node:alpine
 
-RUN apk --no-cache add curl nginx npm nodejs 
+# Set the working directory to /usr/app
+WORKDIR /usr/app
 
-ADD *.sh /
-RUN chmod +x /*.sh
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-COPY index.html script.js styles.css nginx.conf server.js /
-RUN npm install express ws
+# Install dependencies
+RUN npm install
 
-ENTRYPOINT ["/start.sh"]
-CMD [""]
+# Copy the rest of the application code
+COPY ./ ./
+
+# Set up a default command to run the application
+CMD [ "npm", "start" ]
