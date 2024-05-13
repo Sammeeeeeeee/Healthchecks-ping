@@ -23,7 +23,7 @@ fi
 
 if [ "$WEB" = "true" ]; then
     echo "Starting nginx..."
-    nginx -g "daemon off;"
+    nginx
     echo "Started nginx"
 fi
 
