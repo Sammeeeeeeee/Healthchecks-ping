@@ -1,14 +1,13 @@
-
+# Dockerfile
 FROM alpine:latest
 
-RUN apk --no-cache add curl nginx
+RUN apk --no-cache add curl nginx npm nodejs 
 
 ADD *.sh /
 RUN chmod +x /*.sh
 
-COPY index.html /usr/share/nginx/html/
-
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY index.html script.js styles.css nginx.conf server.js /
+RUN npm install express ws
 
 ENTRYPOINT ["/start.sh"]
 CMD [""]

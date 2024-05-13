@@ -1,0 +1,11 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+#logs {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
