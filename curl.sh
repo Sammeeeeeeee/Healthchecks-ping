@@ -38,5 +38,4 @@ else
     echo "$(date) - CURL FAILED"
     exit 1
 fi
-
 echo "$(date) - curl job End"
