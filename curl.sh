@@ -9,21 +9,24 @@ if [ -z "$UUID" ]; then
     exit 1
 else
     echo "$UUID provided as UUID..."
-fi  # Added fi here
+fi  
 
 if [ -z "$CRON" ]; then
     echo "ERROR: No CRON provided in CRON variable."
     exit 1
 else
     echo "$CRON provided as CRON. Checking valid CRON..."
-fi  # Added fi here
+fi 
 
 if ! crontab -l 2>/dev/null | grep -q "$CRON"; then
     echo "ERROR: Invalid CRON expression or CRON not defined."
     exit 1
 else
-    echo "$CRON is OK"
-fi  
+    echo "CRON expression is OK. Next 3 scheduled runs:"
+    for i in {1..3}; do
+        echo "Run $i: $(date -d "$(date +'%Y-%m-%d %H:%M:%S')" --date="$(/usr/sbin/crontab -l | grep -E "$CRON" | /usr/bin/crontab -l | awk '{print $1, $2, $3, $4, $5}') +$((i * 60)) seconds" +'%Y-%m-%d %H:%M:%S')"
+    done
+fi
 
 echo "Building URL..."
 
