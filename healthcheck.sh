@@ -8,7 +8,7 @@ if [ -f "healthcheck.txt" ]; then
         echo "HEALTHCHECK: Healthy"
         exit 0
     elif [ "$content" = "1" ]; then 
-        echo "HEALTHCHECK: Unhealthy"
+        echo "HEALTHCHECK: Unhealthy."
         exit 1
     else
         echo "Invalid content in healthcheck file"
