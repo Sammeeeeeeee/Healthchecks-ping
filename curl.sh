@@ -4,6 +4,8 @@ set -e
 
 echo "$(date) ------------------------------------ Starting curl.sh:"
 
+. /config.sh
+
 if [ -z "$UUID" ]; then
     echo "ERROR: No UUID provided in UUID variable."
     exit 1
