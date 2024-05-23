@@ -9,9 +9,11 @@ echo "Exporting UUID, TIMEOUT, and RETRY variables..."
 export UUID=$UUID
 export TIMEOUT=${TIMEOUT:-10}
 export RETRY=${RETRY:-5}
+export CRON=${CRON:-*/1 * * * *}
 
 echo "Timeout set to: $TIMEOUT seconds."
 echo "Retry count set to: $RETRY times."
+echo "Cron count set to: $CRON times."
 
 echo "verifing configurations.sh"
 if [ -x "/configurations.sh" ]; then
