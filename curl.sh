@@ -4,13 +4,13 @@ set -e
 
 echo "$(date) ------------------------------------ Starting curl.sh:"
 
-. /start.sh
+. /configurations.sh
 
-echo "verifing start.sh (for varibles)"
-if [ -x "/start.sh" ]; then
-    echo "start.sh script verification successful."
+echo "verifing configurations.sh (for varibles)"
+if [ -x "/configurations.sh" ]; then
+    echo "configurations.sh script verification successful."
 else
-    echo "CRITICAL: start.sh script not found. Please repull the image, or submit an issue at https://github.com/Sammeeeeeeee/Healthchecks-ping/issues"
+    echo "CRITICAL: configurations.sh script not found. Please repull the image, or submit an issue at https://github.com/Sammeeeeeeee/Healthchecks-ping/issues"
 fi
 
 if [ -z "$UUID" ]; then
