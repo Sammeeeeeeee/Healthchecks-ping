@@ -23,15 +23,6 @@ else
     echo "CRITICAL: curl.sh script not found. Please repull the image, or submit an issue at https://github.com/Sammeeeeeeee/Healthchecks-ping/issues"
 fi
 
-if [ "$WEB" = "true" ]; then
-    echo "Starting nginx server..."
-    nginx
-    echo "Nginx server successfully started."
-else 
-    echo "No web server set. Start web UI with -e WEB="true"."
-fi
-
-echo "Web server status: OK."
 echo "Running cron jobs in foreground. No further output expected from start.sh. Initialization complete."
 crond -l 2 -f
-echo "CRON execution failed. Check logs for details, or open an issue at https://github.com/Sammeeeeeeee/Healthchecks-ping/issues"
+echo "CRITICAL: If you are seeing this, CRON execution failed. Check logs for details, or open an issue at https://github.com/Sammeeeeeeee/Healthchecks-ping/issues"
