@@ -41,12 +41,14 @@ URL="https://hc-ping.com/$UUID"
 
 echo "URL is OK"
 
-echo "Trying to CURL Healthchecks..."
+echo "Trying to CURL Healthchecks.io..."
 
 if curl -s -o /dev/null -m "$TIMEOUT" --retry "$RETRY" "$URL"; then
     echo "CURL OK"
+    echo "0" > healthcheck.txt
 else
     echo "$(date) - CURL FAILED"
+    echo "1" > healthcheck.txt
     exit 1
 fi
 echo "$(date) ------------------------------------ curl.sh END"
