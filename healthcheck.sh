@@ -13,5 +13,5 @@ if [ -f "healthcheck.txt" ]; then
         exit 1
     fi
 else
-    echo "Healthcheck file does not exist. It will be created on first run"
+    echo "Healthcheck file does not exist. It will be created on first curl"
 fi

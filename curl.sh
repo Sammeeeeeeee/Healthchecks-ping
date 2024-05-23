@@ -44,10 +44,10 @@ echo "URL is OK"
 echo "Trying to CURL Healthchecks.io..."
 
 if curl -s -o /dev/null -m "$TIMEOUT" --retry "$RETRY" "$URL"; then
-    echo "CURL OK"
+    echo "CURL OK. Updating healthcheck."
     echo "0" > healthcheck.txt
 else
-    echo "$(date) - CURL FAILED"
+    echo "$(date) - CURL FAILED. Updating healthcheck."
     echo "1" > healthcheck.txt
     exit 1
 fi
