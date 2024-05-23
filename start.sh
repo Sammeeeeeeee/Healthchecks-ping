@@ -13,6 +13,14 @@ export RETRY=${RETRY:-5}
 echo "Timeout set to: $TIMEOUT seconds."
 echo "Retry count set to: $RETRY times."
 
+echo "verifing configurations.sh"
+if [ -x "/configurations.sh" ]; then
+    echo "configurations.sh script verification successful."
+else
+    echo "CRITICAL: configurations.sh script not found. Please repull the image, or submit an issue at https://github.com/Sammeeeeeeee/Healthchecks-ping/issues"
+    exit 1
+fi
+
 echo "verifing curl.sh"
 if [ -x "/curl.sh" ]; then
     echo "curl.sh script verification successful."
