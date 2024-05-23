@@ -1,11 +1,13 @@
 #!/bin/sh
 
 if [ -f "healthcheck.txt" ]; then
-    content=$(<healthcheck.txt)
-    if [ "$content" == "0" ]; then
+    content=$(cat healthcheck.txt)  
+    content=$(echo "$content" | tr -d '\n')  
+
+    if [ "$content" = "0" ]; then  
         echo "HEALTHCHECK: Healthy"
         exit 0
-    elif [ "$content" == "1" ]; then
+    elif [ "$content" = "1" ]; then 
         echo "HEALTHCHECK: Unhealthy"
         exit 1
     else
