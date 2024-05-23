@@ -4,7 +4,14 @@ set -e
 
 echo "$(date) ------------------------------------ Starting curl.sh:"
 
-. /config.sh
+. /start.sh
+
+echo "verifing start.sh (for varibles)"
+if [ -x "/start.sh" ]; then
+    echo "start.sh script verification successful."
+else
+    echo "CRITICAL: start.sh script not found. Please repull the image, or submit an issue at https://github.com/Sammeeeeeeee/Healthchecks-ping/issues"
+fi
 
 if [ -z "$UUID" ]; then
     echo "ERROR: No UUID provided in UUID variable."
