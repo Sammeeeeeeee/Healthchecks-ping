@@ -4,14 +4,15 @@ set -e
 
 echo "$(date) ------------------------------------ Starting curl.sh:"
 
-. /configurations.sh
-
 echo "verifing configurations.sh (for varibles)"
 if [ -x "/configurations.sh" ]; then
     echo "configurations.sh script verification successful."
 else
     echo "CRITICAL: configurations.sh script not found. Please repull the image, or submit an issue at https://github.com/Sammeeeeeeee/Healthchecks-ping/issues"
+    exit 1
 fi
+
+. /configurations.sh
 
 if [ -z "$UUID" ]; then
     echo "ERROR: No UUID provided in UUID variable."
@@ -49,3 +50,4 @@ else
     exit 1
 fi
 echo "$(date) ------------------------------------ curl.sh END"
+exit 0
