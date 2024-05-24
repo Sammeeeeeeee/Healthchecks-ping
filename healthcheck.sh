@@ -1,5 +1,7 @@
 #!/bin/sh
 
+touch healthcheck.txt 
+
 if [ -f "healthcheck.txt" ]; then
     content=$(cat healthcheck.txt)  
     content=$(echo "$content" | tr -d '\n')  
