@@ -31,6 +31,7 @@ if [ -x "/curl.sh" ]; then
     echo "Adding curl.sh to cron jobs..."
     echo "$CRON /curl.sh" >> /var/spool/cron/crontabs/root
     echo "CRON job successfully set with frequency: $CRON."
+    . / curl.sh
 else
     echo "CRITICAL: curl.sh script not found. Please repull the image, or submit an issue at https://github.com/Sammeeeeeeee/Healthchecks-ping/issues"
 fi
