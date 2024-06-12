@@ -3,6 +3,7 @@ FROM alpine:latest
 RUN apk --no-cache add curl
 
 ADD *.sh /
+ADD *.txt /
 RUN chmod +x /*.sh
 RUN chmod a+w /*.txt
 
