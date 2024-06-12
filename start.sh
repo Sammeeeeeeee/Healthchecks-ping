@@ -2,8 +2,6 @@
 
 set -e
 
-touch healthcheck.txt
-
 echo "Initializing start.sh:"
 
 echo "Exporting UUID, TIMEOUT, and RETRY variables..."

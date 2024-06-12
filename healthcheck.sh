@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ -f "healthcheck.txt" ]; then
-    content=$(cat healthcheck.txt)  
+if [ -f "Healthcheck.txt" ]; then
+    content=$(cat Healthcheck.txt)  
     content=$(echo "$content" | tr -d '\n')  
 
     if [ "$content" = "0" ]; then  
@@ -11,7 +11,7 @@ if [ -f "healthcheck.txt" ]; then
         echo "Curl script exited with a unhealthy status (1)"
         exit 1
     else
-        echo "Invalid content in the healthcheck file"
+        echo "Invalid content in the healthcheck file."
         exit 1
     fi
 else

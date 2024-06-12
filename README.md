@@ -34,9 +34,9 @@ A [Docker](https://docs.docker.com/guides/get-started/) image is available on Do
 | RETRY | ❌ | `5` | `5` | How many times to [retry](https://everything.curl.dev/usingcurl/downloads/retry.html). |
 
 ## Docker run
-### Minimum
+### Basic
 ```bash
-docker run -e UUID="1eec3c1a-3ffc-4f20-9c55-31c47188ef49" -e CRON="*/5 * * * *" -e TIMEOUT="10" -e RETRY="5" sammeeeee/healthcheck-curl:latest
+docker run -e UUID="1eec3c1a-3ffc-4f20-9c55-31c47188ef49" -e CRON="*/5 * * * *" sammeeeee/healthcheck-curl:latest
 ```
 
 ### Recommended
@@ -56,8 +56,6 @@ services:
     environment:
       - UUID=1eec3c1a-3ffc-4f20-9c55-31c47188ef49
       - CRON=*/5 * * * *
-      - TIMEOUT=10
-      - RETRY=5
 ```
 
 ### Recommended
